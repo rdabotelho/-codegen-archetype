@@ -5,7 +5,6 @@ template {
 		replace('com.example.demo', PACKAGE_NAME)
 	}
 	block(7, 13) {
-		replace('Demo', ${PROJECT_NAME.pascalCase}Application.java)		
-		replace('-', '')		
+		replace('Demo', ${PROJECT_NAME.pascalCase}Application)
 	}
 }
