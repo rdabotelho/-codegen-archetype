@@ -9,8 +9,8 @@ public class DomainNameDto {
 
 	private Long id;
 	private String attribute;
-	private OtherDTO attribute;
-	private List<OtherDTO> attribute = new ArrayList<>();
+	private OtherDto attribute;
+	private List<OtherDto> attribute = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -28,19 +28,19 @@ public class DomainNameDto {
 		this.attribute = attribute;
 	}
 
-	public OtherDTO getAttribute() {
+	public OtherDto getAttribute() {
 		return attribute;
 	}
 
-	public void setAttribute(OtherDTO attribute) {
+	public void setAttribute(OtherDto attribute) {
 		this.attribute = attribute;
 	}
 
-	public List<OtherDTO> getAttribute() {
+	public List<OtherDto> getAttribute() {
 		return attribute;
 	}
 
-	public void setAttribute(List<OtherDTO> attribute) {
+	public void setAttribute(List<OtherDto> attribute) {
 		this.attribute = attribute;
 	}
 

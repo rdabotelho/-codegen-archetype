@@ -23,13 +23,13 @@ public class  DomainNameMapper {
 		return entity;
 	}
 
-	public DomainNameDto toDTO(DomainName entity) {
+	public DomainNameDto toDto(DomainName entity) {
 		if (entity == null) return null;
 		DomainNameDto dto = new DomainNameDto();
 		dto.setId(entity.getId());
 		dto.setAttribute(entity.getAttribute());
-		dto.setAttribute(OtherMapper.INSTANCE.toDTO(entity.getAttribute()));
-		dto.setAttribute(entity.getAttribute().stream().map(it -> OtherMapper.INSTANCE.toDTO(it)).collect(Collectors.toList()));
+		dto.setAttribute(OtherMapper.INSTANCE.toDto(entity.getAttribute()));
+		dto.setAttribute(entity.getAttribute().stream().map(it -> OtherMapper.INSTANCE.toDto(it)).collect(Collectors.toList()));
 		return dto;
 	}
 

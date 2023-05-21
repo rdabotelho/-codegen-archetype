@@ -32,7 +32,7 @@ public class DomainNameController {
             throw new RuntimeException("A new domainName cannot already have an ID");
         }
         DomainNameDto result = domainNameService.createDomainName(DomainNameMapper.INSTANCE.toEntity(domainName))
-                .map(it -> DomainNameMapper.INSTANCE.toDTO(it))
+                .map(it -> DomainNameMapper.INSTANCE.toDto(it))
                 .get();
         return ResponseEntity
                 .created(new URI("/api/domainNames/" + result.getId()))
@@ -47,7 +47,7 @@ public class DomainNameController {
         }
         return domainNameService.getDomainNameById(domainName.getId())
                 .map(it -> DomainNameMapper.INSTANCE.toEntity(domainName, it))
-                .map(it -> ResponseEntity.ok().body(DomainNameMapper.INSTANCE.toDTO(domainNameService.updateDomainName(it).get())))
+                .map(it -> ResponseEntity.ok().body(DomainNameMapper.INSTANCE.toDto(domainNameService.updateDomainName(it).get())))
                 .orElse(ResponseEntity.notFound().build());
     }
 
@@ -55,7 +55,7 @@ public class DomainNameController {
     public List<DomainNameDto> getAllDomainNames() {
         log.debug("REST request to get all domainNames");
         return domainNameService.getAllDomainNames().stream()
-                .map(it -> DomainNameMapper.INSTANCE.toDTO(it))
+                .map(it -> DomainNameMapper.INSTANCE.toDto(it))
                 .collect(Collectors.toList());
     }
 
@@ -63,7 +63,7 @@ public class DomainNameController {
     public ResponseEntity<DomainNameDto> getDomainName(@PathVariable Long id) {
         log.debug("REST request to get domainName : {}", id);
         return domainNameService.getDomainNameById(id)
-                .map(it -> ResponseEntity.ok().body(DomainNameMapper.INSTANCE.toDTO(domainNameService.updateDomainName(it).get())))
+                .map(it -> ResponseEntity.ok().body(DomainNameMapper.INSTANCE.toDto(domainNameService.updateDomainName(it).get())))
                 .orElse(ResponseEntity.notFound().build());
     }
 
