@@ -17,6 +17,7 @@ public class DomainName implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "ATTRIBUTE")
 	private String attribute;
 

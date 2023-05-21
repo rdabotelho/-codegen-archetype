@@ -26,24 +26,28 @@ template {
 	    iterate(domain.attributes, item) {
 	        block(19, 21) {
                 showIf(item.basic.equals, 'true')
+				block(19, 19) {
+	                showIf(item.type, 'Date')
+	                showIf(item.type, 'DateTime')
+				}
         		replaceIf('ATTRIBUTE', item.column, item.column.notEquals, '', item.name.snakeUpperCase)
                 replace('String', item.type)
                 replace('attribute', item.name)
 				replace('Date ', 'LocalDate ')
 				replace('DateTime ', 'LocalDateTime ')
 	        }
-	        block(22, 25) {
+	        block(23, 26) {
                 showIf(item.enum.equals, 'true')
         		replaceIf('ATTRIBUTE', item.column, item.column.notEquals, '', item.name.snakeUpperCase)
                 replace('String', item.type)
                 replace('attribute', item.name)
 	        }
-	        block(26, 28) {
+	        block(27, 29) {
                 showIf(item.oneToOne.equals, 'true')
                 replace('String', item.type)
                 replace('attribute', item.name)
 	        }
-	        block(29, 34) {
+	        block(30, 35) {
                 showIf(item.manyToMany.equals, 'true')
                 showIf(item.mappedBy.equals, '')
                 replace('DOMAIN', domain.name.snakeUpperCase)
@@ -51,33 +55,33 @@ template {
                 replace('TypeDomainName', item.typeDomain.name)
                 replace('attribute', item.name)
 	        }
-	        block(35, 37) {
+	        block(36, 38) {
                 showIf(item.manyToMany.equals, 'true')
                 showIf(item.mappedBy.notEquals, '')
                 replace('MAPPED_BY', item.mappedBy)
                 replace('attribute', item.name)
                 replace('TypeDomainName', item.typeDomain.name)
 	        }
-	        block(38, 40) {
+	        block(39, 41) {
                 showIf(item.manyToOne.equals, 'true')
                 replace('attribute', item.name)
                 replace('TypeDomainName', item.typeDomain.name)
 	        }
-	        block(41, 43) {
+	        block(42, 44) {
                 showIf(item.oneToMany.equals, 'true')
                 replace('attribute', item.name)
                 replace('TypeDomainName', item.typeDomain.name)
 	        }
 	    }
 	}
-	block(52, 59) {
+	block(53, 60) {
 		iterate(domain.attributes, item) {
 			replace('String', item.type)
 			replace('Attribute', item.name.pascalCase)
 			replace('attribute', item.name)
 		}
 	}
-	block(60, 79) {
+	block(61, 80) {
         replace('DomainName', domain.name)
         replace('domainName', domain.name.camelCase)
 	}
