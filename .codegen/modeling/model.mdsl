@@ -1,5 +1,6 @@
-entity User {
-	String fistName
-	String lastName
-	Integer age
+entity Article {
+	String title
+	String text
+	List<String> authors
+	Date createdDate
 }
