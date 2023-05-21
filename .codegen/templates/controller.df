@@ -6,31 +6,31 @@ template {
 	    replace('com.example.demo', PACKAGE)
 		replace('DomainName', domain.name.pascalCase)
 	}
-	block(22, 22) {
+	block(19, 19) {
         replaceIf('TagName', item.tagName, item.tagName.notEquals, '', domain.name)
         replaceIf('TagDescription', item.TagDescription, item.tagName.notEquals, '', 'Param tagDescription not defined in entity params')
 	}
-	block(24, 29) {
+	block(21, 26) {
 		replace('DomainName', domain.name.pascalCase)
 		replace('domainName', domain.name.lowerCase)
 	}
-	block(31, 42) {
+	block(28, 39) {
 		replace('DomainName', domain.name.pascalCase)
 		replace('domainName', domain.name.lowerCase)
 	}
-	block(46, 56) {
+	block(42, 52) {
 		replace('DomainName', domain.name.pascalCase)
 		replace('domainName', domain.name.lowerCase)
 	}
-	block(58, 63) {
+	block(53, 58) {
 		replace('DomainName', domain.name.pascalCase)
 		replace('domainName', domain.name.lowerCase)
 	}
-	block(67, 74) {
+	block(61, 68) {
 		replace('DomainName', domain.name.pascalCase)
 		replace('domainName', domain.name.lowerCase)
 	}
-	block(76, 82) {
+	block(69, 75) {
 		replace('DomainName', domain.name.pascalCase)
 		replace('domainName', domain.name.lowerCase)
 	}
