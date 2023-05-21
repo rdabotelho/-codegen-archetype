@@ -10,7 +10,6 @@ template {
 	}
 	block(8, 8) {
 	    showIf(domain.attributes.contains, 'type', 'Date')
-	    showIf(domain.attributes.contains, 'type', 'DateTime')
 	}
 	block(9, 9) {
 	    showIf(domain.attributes.contains, 'enum', 'true')
