@@ -5,7 +5,8 @@ import java.io.Serializable;
 import java.util.Objects;
 import java.util.ArrayList;
 import java.util.List;
-import java.time.*;
+import java.time.LocalDateTime;
+import java.time.LocalDate;
 import com.example.demo.domain.enums.*;
 
 @Entity
