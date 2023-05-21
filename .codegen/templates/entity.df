@@ -8,6 +8,9 @@ template {
 	block(6, 7) {
 	    showIf(domain.attributes.contains, 'list', 'true')
 	}
+	block(8, 8) {
+	    showIf(domain.attributes.contains, 'type', 'DateTime')
+	}
 	block(9, 9) {
 	    showIf(domain.attributes.contains, 'type', 'Date')
 	}
@@ -27,6 +30,7 @@ template {
                 replace('String', item.type)
                 replace('attribute', item.name)
 				replace('Date ', 'LocalDate ')
+				replace('DateTime ', 'LocalDateTime ')
 	        }
 	        block(22, 25) {
                 showIf(item.enum.equals, 'true')
