@@ -26,7 +26,7 @@ template {
         		replaceIf('ATTRIBUTE', item.column, item.column.notEquals, '', item.name.snakeUpperCase)
                 replace('String', item.type)
                 replace('attribute', item.name)
-				replace('Date ', 'LocalDate')
+				replace('Date ', 'LocalDate ')
 	        }
 	        block(21, 24) {
                 showIf(item.enum.equals, 'true')
