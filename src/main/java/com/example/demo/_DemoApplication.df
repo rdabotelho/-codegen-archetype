@@ -1,6 +1,6 @@
 template {
 	sourceFile: 'DemoApplication.java'
-	targetFile: 'src/main/java/${PACKAGE_DIR}/${PROJECT_NAME.pascalCase}Application.java'
+	targetFile: 'src/main/java/${PACKAGE_DIR}/${PROJECT_NAME.convertDashToSpace.pascalCase}Application.java'
 	block(1, 1) {
 		replace('com.example.demo', PACKAGE_NAME)
 	}
