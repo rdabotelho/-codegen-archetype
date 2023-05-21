@@ -9,7 +9,10 @@ template {
 	    showIf(domain.attributes.contains, 'list', 'true')
 	}
 	block(8, 8) {
-	    showIf(domain.attributes.contains, 'type', 'LocalDate')
+	    showIf(domain.attributes.contains, 'type', 'Date')
+	}
+	block(8, 8) {
+	    showIf(domain.attributes.contains, 'type', 'DateTime')
 	}
 	block(9, 9) {
 	    showIf(domain.attributes.contains, 'enum', 'true')
