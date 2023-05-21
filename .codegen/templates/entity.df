@@ -10,8 +10,6 @@ template {
 	}
 	block(8, 8) {
 	    showIf(domain.attributes.contains, 'type', 'Date')
-	}
-	block(8, 8) {
 	    showIf(domain.attributes.contains, 'type', 'DateTime')
 	}
 	block(9, 9) {
