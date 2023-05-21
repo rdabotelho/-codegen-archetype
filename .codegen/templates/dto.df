@@ -8,33 +8,39 @@ template {
 	block(2, 4) {
 	    showIf(domain.attributes.contains, 'list', 'true')
 	}
+	block(5, 5) {
+	    showIf(domain.attributes.contains, 'type', 'DateTime')
+	}
 	block(6, 6) {
+	    showIf(domain.attributes.contains, 'type', 'Date')
+	}
+	block(8, 8) {
 		replace('DomainName', domain.name.pascalCase)
 	}
-	block(9, 11) {
+	block(11, 13) {
 	    iterate(domain.attributes, item) {
-	        block(9, 9) {
+	        block(11, 11) {
                 showIf(item.basic.equals, 'true')
                 replace('String', item.type)
                 replace('attribute', item.name)
 				replace('Date ', 'LocalDate ')
 				replace('DateTime ', 'LocalDateTime ')				
 	        }
-	        block(10, 10) {
+	        block(12, 12) {
                 showIf(item.oneToOne.equals, 'true')
                 replace('Other', item.type)
                 replace('attribute', item.name)
 	        }
-	        block(11, 11) {
+	        block(13, 13) {
                 showIf(item.list.equals, 'true')
                 replace('Other', item.typeDomain.name)
                 replace('attribute', item.name)
 	        }
 	    }
 	}
-	block(20, 43) {
+	block(22, 45) {
 	    iterate(domain.attributes, item) {
-	        block(20, 27) {
+	        block(22, 29) {
                 showIf(item.basic.equals, 'true')
                 replace('String', item.type)
     			replace('Attribute', item.name.pascalCase)
@@ -42,13 +48,13 @@ template {
 				replace('Date ', 'LocalDate ')
 				replace('DateTime ', 'LocalDateTime ')
 	        }
-	        block(28, 35) {
+	        block(30, 37) {
                 showIf(item.oneToOne.equals, 'true')
                 replace('Other', item.type)
     			replace('Attribute', item.name.pascalCase)
                 replace('attribute', item.name)
 	        }
-	        block(36, 43) {
+	        block(38, 45) {
                 showIf(item.list.equals, 'true')
                 replace('Other', item.typeDomain.name)
     			replace('Attribute', item.name.pascalCase)
@@ -56,7 +62,7 @@ template {
 	        }
 	    }
 	}
-	block(44, 50) {
+	block(46, 52) {
         replace('DomainName', domain.name)
         replace('domainName', domain.name.camelCase)
 	}
