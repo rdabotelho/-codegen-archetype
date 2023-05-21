@@ -30,11 +30,13 @@ template {
 	                showIf(item.type, 'Date')
 	                showIf(item.type, 'DateTime')
 				}
-        		replaceIf('ATTRIBUTE', item.column, item.column.notEquals, '', item.name.snakeUpperCase)
-                replace('String', item.type)
-                replace('attribute', item.name)
-				replace('Date ', 'LocalDate ')
-				replace('DateTime ', 'LocalDateTime ')
+				block(20, 21) {
+					replaceIf('ATTRIBUTE', item.column, item.column.notEquals, '', item.name.snakeUpperCase)
+					replace('String', item.type)
+					replace('attribute', item.name)
+					replace('Date ', 'LocalDate ')
+					replace('DateTime ', 'LocalDateTime ')
+				}
 	        }
 	        block(23, 26) {
                 showIf(item.enum.equals, 'true')
