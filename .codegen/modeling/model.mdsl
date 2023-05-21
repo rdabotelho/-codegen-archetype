@@ -1,6 +1,6 @@
 entity Article {
 	String title
 	String text
-	List<String> authors
+	String author
 	Date createdDate
 }
