@@ -1,8 +1,8 @@
 template {
 	sourceFile: 'DemoApplication.java'
-	targetFile: 'src/main/java/${PACKAGE_DIR}/${PROJECT_NAME.convertDashToSpace.pascalCase}Application.java'
+	targetFile: 'src/main/java/${PACKAGE.convertDotToSlash}/${PROJECT_NAME.convertDashToSpace.pascalCase}Application.java'
 	block(1, 1) {
-		replace('com.example.demo', PACKAGE_NAME)
+		replace('com.example.demo', PACKAGE)
 	}
 	block(7, 13) {
 		replace('Demo', PROJECT_NAME.convertDashToSpace.pascalCase)
