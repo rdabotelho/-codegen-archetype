@@ -22,15 +22,15 @@ template {
 		replace('DomainName', domain.name.pascalCase)
 		replace('domainName', domain.name.lowerCase)
 	}
-	block(53, 58) {
+	block(54, 59) {
 		replace('DomainName', domain.name.pascalCase)
 		replace('domainName', domain.name.lowerCase)
 	}
-	block(61, 68) {
+	block(62, 69) {
 		replace('DomainName', domain.name.pascalCase)
 		replace('domainName', domain.name.lowerCase)
 	}
-	block(69, 75) {
+	block(70, 76) {
 		replace('DomainName', domain.name.pascalCase)
 		replace('domainName', domain.name.lowerCase)
 	}

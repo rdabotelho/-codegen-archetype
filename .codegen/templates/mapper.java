@@ -1,16 +1,21 @@
 package com.example.demo.domain.mapper;
 
 import com.example.demo.domain.model.DomainName;
-import com.example.demo.domain.dto.DomainNameDTO;
+import com.example.demo.domain.dto.DomainNameDto;
 import java.util.stream.Collectors;
 
 public class  DomainNameMapper {
 
 	public static final DomainNameMapper INSTANCE = new DomainNameMapper();
 
-	public DomainName toEntity(DomainNameDTO dto) {
+	public DomainName toEntity(DomainNameDto dto) {
 		if (dto == null) return null;
 		DomainName entity = new DomainName();
+		return toEntity(dto, entity);
+	}
+
+	public DomainName toEntity(DomainNameDto dto, DomainName entity) {
+		if (dto == null) return entity;
 		entity.setId(dto.getId());
 		entity.setAttribute(dto.getAttribute());
 		entity.setAttribute(OtherMapper.INSTANCE.toEntity(dto.getAttribute()));
@@ -18,9 +23,9 @@ public class  DomainNameMapper {
 		return entity;
 	}
 
-	public DomainNameDTO toDTO(DomainName entity) {
+	public DomainNameDto toDTO(DomainName entity) {
 		if (entity == null) return null;
-		DomainNameDTO dto = new DomainNameDTO();
+		DomainNameDto dto = new DomainNameDto();
 		dto.setId(entity.getId());
 		dto.setAttribute(entity.getAttribute());
 		dto.setAttribute(OtherMapper.INSTANCE.toDTO(entity.getAttribute()));

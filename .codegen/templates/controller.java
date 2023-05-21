@@ -1,6 +1,6 @@
 package com.example.demo.controller;
 
-import com.example.demo.domain.dto.DomainNameDTO;
+import com.example.demo.domain.dto.DomainNameDto;
 import com.example.demo.domain.mapper.DomainNameMapper;
 import com.example.demo.service.DomainNameService;
 
@@ -26,12 +26,12 @@ public class DomainNameController {
     private DomainNameService domainNameService;
 
     @PostMapping("/domainNames")
-    public ResponseEntity<DomainNameDTO> createDomainName(@RequestBody DomainNameDTO domainName) throws Exception {
+    public ResponseEntity<DomainNameDto> createDomainName(@RequestBody DomainNameDto domainName) throws Exception {
         log.debug("REST request to save domainName : {}", domainName);
         if (domainName.getId() != null) {
             throw new RuntimeException("A new domainName cannot already have an ID");
         }
-        DomainNameDTO result = domainNameService.createDomainName(DomainNameMapper.INSTANCE.toEntity(domainName))
+        DomainNameDto result = domainNameService.createDomainName(DomainNameMapper.INSTANCE.toEntity(domainName))
                 .map(it -> DomainNameMapper.INSTANCE.toDTO(it))
                 .get();
         return ResponseEntity
@@ -40,18 +40,19 @@ public class DomainNameController {
     }
 
     @PutMapping("/domainNames")
-    public ResponseEntity<DomainNameDTO> updateDomainName(@RequestBody DomainNameDTO domainName) {
+    public ResponseEntity<DomainNameDto> updateDomainName(@RequestBody DomainNameDto domainName) {
         log.debug("REST request to update domainName : {}", domainName);
         if (domainName.getId() == null) {
             throw new RuntimeException("Invalid id");
         }
         return domainNameService.getDomainNameById(domainName.getId())
+                .map(it -> DomainNameMapper.INSTANCE.toEntity(domainName, it))
                 .map(it -> ResponseEntity.ok().body(DomainNameMapper.INSTANCE.toDTO(domainNameService.updateDomainName(it).get())))
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping("/domainNames")
-    public List<DomainNameDTO> getAllDomainNames() {
+    public List<DomainNameDto> getAllDomainNames() {
         log.debug("REST request to get all domainNames");
         return domainNameService.getAllDomainNames().stream()
                 .map(it -> DomainNameMapper.INSTANCE.toDTO(it))
@@ -59,7 +60,7 @@ public class DomainNameController {
     }
 
     @GetMapping("/domainNames/{id}")
-    public ResponseEntity<DomainNameDTO> getDomainName(@PathVariable Long id) {
+    public ResponseEntity<DomainNameDto> getDomainName(@PathVariable Long id) {
         log.debug("REST request to get domainName : {}", id);
         return domainNameService.getDomainNameById(id)
                 .map(it -> ResponseEntity.ok().body(DomainNameMapper.INSTANCE.toDTO(domainNameService.updateDomainName(it).get())))

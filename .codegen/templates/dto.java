@@ -5,7 +5,7 @@ import java.util.List;
 import java.time.LocalDateTime;
 import java.time.LocalDate;
 
-public class DomainNameDTO {
+public class DomainNameDto {
 
 	private Long id;
 	private String attribute;
@@ -46,7 +46,7 @@ public class DomainNameDTO {
 
 	@Override
 	public String toString() {
-		return "DomainNameDTO{" +
+		return "DomainNameDto{" +
 			"id=" + id +
 			'}';
 	}
