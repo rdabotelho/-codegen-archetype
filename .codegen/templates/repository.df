@@ -1,0 +1,11 @@
+template {
+	sourceFile: 'repository.java'
+	targetFile: 'src/main/java/${PACKAGE.convertDotToSlash}/repository/${domain.name}Repository.java'
+	scope: 'entity'
+	block(1, 5) {
+	    replace('com.example.demo', PACKAGE)
+	}
+	block(8, 8) {
+		replace('Entity', domain.name.pascalCase)
+	}
+}
