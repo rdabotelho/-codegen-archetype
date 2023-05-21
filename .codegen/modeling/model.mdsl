@@ -2,5 +2,5 @@ entity Article {
 	String title
 	String text
 	String author
-	DateTime date (type: 'LocalDate')
+	Date date
 }
