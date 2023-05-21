@@ -17,6 +17,8 @@ template {
                 showIf(item.basic.equals, 'true')
                 replace('String', item.type)
                 replace('attribute', item.name)
+				replace('Date ', 'LocalDate ')
+				replace('DateTime ', 'LocalDateTime ')				
 	        }
 	        block(10, 10) {
                 showIf(item.oneToOne.equals, 'true')
@@ -37,6 +39,8 @@ template {
                 replace('String', item.type)
     			replace('Attribute', item.name.pascalCase)
                 replace('attribute', item.name)
+				replace('Date ', 'LocalDate ')
+				replace('DateTime ', 'LocalDateTime ')
 	        }
 	        block(28, 35) {
                 showIf(item.oneToOne.equals, 'true')
