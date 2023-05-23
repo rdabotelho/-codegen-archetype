@@ -21,18 +21,23 @@ template {
 	block(16, 18) {
 		replace('DomainName', domain.name.pascalCase)
 	}
-	block(20, 22) {
+	block(20, 23) {
 	    iterate(domain.attributes, item) {
 	        block(20, 20) {
                 showIf(item.basic.equals, 'true')
                 replace('Attribute', item.name.pascalCase)
 	        }
 	        block(21, 21) {
+                showIf(item.enum.equals, 'true')
+                replace('AttributeEnum', item.name.pascalCase)
+                replace('TypeDomainName', item.typeDomain.name)
+	        }
+	        block(22, 22) {
                 showIf(item.oneToOne.equals, 'true')
                 replace('Other', item.type)
                 replace('Attribute', item.name.pascalCase)
 	        }
-	        block(22, 22) {
+	        block(23, 23) {
                 showIf(item.list.equals, 'true')
                 replace('Other', item.typeDomain.name)
                 replace('Attribute', item.name.pascalCase)
@@ -40,21 +45,25 @@ template {
 
 	    }
 	}
-	block(26, 28) {
+	block(27, 29) {
 		replace('DomainName', domain.name.pascalCase)
 	}
-	block(30, 32) {
+	block(31, 34) {
 	    iterate(domain.attributes, item) {
-	        block(30, 30) {
+	        block(31, 31) {
                 showIf(item.basic.equals, 'true')
                 replace('Attribute', item.name.pascalCase)
 	        }
-	        block(31, 31) {
+	        block(32, 32) {
+                showIf(item.enum.equals, 'true')
+                replace('Attribute', item.name.pascalCase)
+	        }
+	        block(33, 33) {
                 showIf(item.oneToOne.equals, 'true')
                 replace('Other', item.type)
                 replace('Attribute', item.name.pascalCase)
 	        }
-	        block(32, 32) {
+	        block(34, 34) {
                 showIf(item.list.equals, 'true')
                 replace('Other', item.typeDomain.name)
                 replace('Attribute', item.name.pascalCase)

@@ -9,6 +9,7 @@ public class DomainNameDto {
 
 	private Long id;
 	private String attribute;
+	private String attributeEnum;
 	private OtherDto attribute;
 	private List<OtherDto> attribute = new ArrayList<>();
 
@@ -26,6 +27,14 @@ public class DomainNameDto {
 
 	public void setAttribute(String attribute) {
 		this.attribute = attribute;
+	}
+
+	public String getAttributeEnum() {
+		return attributeEnum;
+	}
+
+	public void setAttributeEnum(String attributeEnum) {
+		this.attributeEnum = attributeEnum;
 	}
 
 	public OtherDto getAttribute() {

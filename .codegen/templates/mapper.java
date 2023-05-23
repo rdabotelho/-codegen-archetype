@@ -18,6 +18,7 @@ public class  DomainNameMapper {
 		if (dto == null) return entity;
 		entity.setId(dto.getId());
 		entity.setAttribute(dto.getAttribute());
+		entity.setAttributeEnum(dto.getAttributeEnum() == null || dto.getAttributeEnum().isBlank() ? null : TypeDomainName.valueOf(dto.getAttributeEnum()));
 		entity.setAttribute(OtherMapper.INSTANCE.toEntity(dto.getAttribute()));
 		entity.setAttribute(dto.getAttribute().stream().map(it -> OtherMapper.INSTANCE.toEntity(it)).collect(Collectors.toList()));
 		return entity;
@@ -28,6 +29,7 @@ public class  DomainNameMapper {
 		DomainNameDto dto = new DomainNameDto();
 		dto.setId(entity.getId());
 		dto.setAttribute(entity.getAttribute());
+		dto.setAttributeEnum(entity.getAttributeEnum() != null ? entity.getAttributeEnum().name() : null);
 		dto.setAttribute(OtherMapper.INSTANCE.toDto(entity.getAttribute()));
 		dto.setAttribute(entity.getAttribute().stream().map(it -> OtherMapper.INSTANCE.toDto(it)).collect(Collectors.toList()));
 		return dto;
