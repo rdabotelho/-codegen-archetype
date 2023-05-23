@@ -3,6 +3,7 @@ package com.example.demo.domain.mapper;
 import com.example.demo.domain.model.DomainName;
 import com.example.demo.domain.dto.DomainNameDto;
 import java.util.stream.Collectors;
+import com.example.demo.domain.enums.*;
 
 public class  DomainNameMapper {
 
