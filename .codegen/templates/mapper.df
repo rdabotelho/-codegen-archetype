@@ -14,6 +14,7 @@ template {
 	}
 	block(6, 6) {
 	    showIf(domain.attributes.contains, 'enum', 'true')
+	    replace('com.example.demo', PACKAGE)
 	}
 	block(8, 10) {
 		replace('DomainName', domain.name.pascalCase)
