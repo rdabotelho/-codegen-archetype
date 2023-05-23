@@ -17,7 +17,7 @@ template {
 	block(8, 8) {
 		replace('DomainName', domain.name.pascalCase)
 	}
-	block(11, 13) {
+	block(11, 14) {
 	    iterate(domain.attributes, item) {
 	        block(11, 11) {
                 showIf(item.basic.equals, 'true')
@@ -42,7 +42,7 @@ template {
 	        }
 	    }
 	}
-	block(23, 46) {
+	block(23, 54) {
 	    iterate(domain.attributes, item) {
 	        block(23, 30) {
                 showIf(item.basic.equals, 'true')
