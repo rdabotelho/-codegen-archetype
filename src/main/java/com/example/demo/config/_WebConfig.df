@@ -1,0 +1,7 @@
+template {
+	sourceFile: 'WebConfig.java'
+	targetFile: 'src/main/java/${PACKAGE.convertDotToSlash}/config/WebConfig.java'
+	block(1, 1) {
+		replace('com.example.demo', PACKAGE)
+	}
+}

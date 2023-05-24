@@ -5,69 +5,94 @@ template {
 	block(1, 1) {
 	    replace('com.example.demo', PACKAGE)
 	}
-	block(2, 4) {
+	block(3, 4) {
 	    replace('com.example.demo', PACKAGE)
 		replace('DomainName', domain.name.pascalCase)
-	}
-	block(5, 5) {
-	    showIf(domain.attributes.contains, 'list', 'true')
 	}
 	block(6, 6) {
+		showIf(domain.attributes.contains, 'type', 'Date')
+	}
+	block(7, 7) {
+		showIf(domain.attributes.contains, 'type', 'DateTime')
+	}
+	block(8, 8, 'OR') {
+		showIf(domain.attributes.contains, 'type', 'Date')
+		showIf(domain.attributes.contains, 'type', 'DateTime')
+	}
+	block(9, 9) {
+	    showIf(domain.attributes.contains, 'list', 'true')
+	}
+	block(10, 10) {
 	    showIf(domain.attributes.contains, 'enum', 'true')
-	    replace('com.example.demo', PACKAGE)
+		replace('com.example.demo', PACKAGE)
 	}
-	block(8, 10) {
+	block(12, 12) {
 		replace('DomainName', domain.name.pascalCase)
 	}
-	block(11, 14) {
+	block(14, 14) {
 		replace('DomainName', domain.name.pascalCase)
 	}
-	block(17, 19) {
+	block(16, 22) {
 		replace('DomainName', domain.name.pascalCase)
 	}
-	block(21, 24) {
+	block(25, 29) {
 	    iterate(domain.attributes, item) {
-	        block(21, 21) {
+	        block(25, 25) {
                 showIf(item.basic.equals, 'true')
+                showIf(item.type.notEquals, 'Date')
+                showIf(item.type.notEquals, 'DateTime')
                 replace('Attribute', item.name.pascalCase)
 	        }
-	        block(22, 22) {
-                showIf(item.enum.equals, 'true')
-                replace('AttributeEnum', item.name.pascalCase)
-                replace('TypeDomainName', item.typeDomain.name)
+	        block(26, 26, 'OR') {
+                showIf(item.type.equals, 'Date')
+                showIf(item.type.equals, 'DateTime')
+                replace('Attribute', item.name.pascalCase)
+                replace('Date', item.type)
+                replace('DateTimeTimeFormatter', 'DateTimeFormatter')
 	        }
-	        block(23, 23) {
+	        block(27, 27) {
+                showIf(item.enum, 'true')
+                replace('Attribute', item.name.pascalCase)
+                replace('TypeDomainName', item.type)
+	        }
+	        block(28, 28) {
                 showIf(item.oneToOne.equals, 'true')
                 replace('Other', item.type)
                 replace('Attribute', item.name.pascalCase)
 	        }
-	        block(24, 24) {
+	        block(29, 29) {
                 showIf(item.list.equals, 'true')
                 replace('Other', item.typeDomain.name)
                 replace('Attribute', item.name.pascalCase)
 	        }
-
 	    }
 	}
-	block(28, 30) {
+	block(33, 35) {
 		replace('DomainName', domain.name.pascalCase)
 	}
-	block(32, 35) {
+	block(37, 41) {
 	    iterate(domain.attributes, item) {
-	        block(32, 32) {
+	        block(37, 37) {
                 showIf(item.basic.equals, 'true')
+                showIf(item.type.notEquals, 'Date')
+                showIf(item.type.notEquals, 'DateTime')
                 replace('Attribute', item.name.pascalCase)
 	        }
-	        block(33, 33) {
-                showIf(item.enum.equals, 'true')
-                replace('AttributeEnum', item.name.pascalCase)
+	        block(38, 38, 'OR') {
+                showIf(item.type.equals, 'Date')
+                showIf(item.type.equals, 'DateTime')
+                replace('Attribute', item.name.pascalCase)
 	        }
-	        block(34, 34) {
+	        block(39, 39) {
+                showIf(item.enum, 'true')
+                replace('Attribute', item.name.pascalCase)
+	        }
+	        block(40, 40) {
                 showIf(item.oneToOne.equals, 'true')
                 replace('Other', item.type)
                 replace('Attribute', item.name.pascalCase)
 	        }
-	        block(35, 35) {
+	        block(41, 41) {
                 showIf(item.list.equals, 'true')
                 replace('Other', item.typeDomain.name)
                 replace('Attribute', item.name.pascalCase)

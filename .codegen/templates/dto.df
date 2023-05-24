@@ -5,65 +5,56 @@ template {
 	block(1, 1) {
 	    replace('com.example.demo', PACKAGE)
 	}
-	block(2, 4) {
+	block(3, 4) {
 	    showIf(domain.attributes.contains, 'list', 'true')
 	}
-	block(5, 5) {
-	    showIf(domain.attributes.contains, 'type', 'DateTime')
-	}
 	block(6, 6) {
-	    showIf(domain.attributes.contains, 'type', 'Date')
-	}
-	block(8, 8) {
 		replace('DomainName', domain.name.pascalCase)
 	}
-	block(11, 14) {
+	block(9, 12) {
 	    iterate(domain.attributes, item) {
-	        block(11, 11) {
+	        block(9, 9) {
                 showIf(item.basic.equals, 'true')
                 replace('String', item.type)
                 replace('attribute', item.name)
-				replace('Date ', 'LocalDate ')
-				replace('DateTime ', 'LocalDateTime ')				
+				replace('Date ', 'String ')
+				replace('DateTime ', 'String ')
+	        }
+	        block(10, 10) {
+                showIf(item.enum, 'true')
+                replace('attribute', item.name)
+	        }
+	        block(11, 11) {
+                showIf(item.oneToOne.equals, 'true')
+                replace('Other', item.type)
+                replace('attribute', item.name)
 	        }
 	        block(12, 12) {
-                showIf(item.enum.equals, 'true')
-                replace('attributeEnum', item.name)
-	        }
-	        block(13, 13) {
-                showIf(item.oneToOne.equals, 'true')
-                replace('Other', item.type)
-                replace('attribute', item.name)
-	        }
-	        block(14, 14) {
                 showIf(item.list.equals, 'true')
                 replace('Other', item.typeDomain.name)
                 replace('attribute', item.name)
 	        }
 	    }
 	}
-	block(23, 54) {
+	block(21, 52) {
 	    iterate(domain.attributes, item) {
-	        block(23, 30) {
+	        block(21, 28) {
                 showIf(item.basic.equals, 'true')
-                replace('String', item.type)
     			replace('Attribute', item.name.pascalCase)
                 replace('attribute', item.name)
-				replace('Date ', 'LocalDate ')
-				replace('DateTime ', 'LocalDateTime ')
 	        }
-	        block(31, 38) {
-                showIf(item.enum.equals, 'true')
-    			replace('AttributeEnum', item.name.pascalCase)
-                replace('attributeEnum', item.name)
+	        block(29, 36) {
+                showIf(item.enum, 'true')
+    			replace('Attribute', item.name.pascalCase)
+                replace('attribute', item.name)
 	        }
-	        block(39, 46) {
+	        block(37, 44) {
                 showIf(item.oneToOne.equals, 'true')
                 replace('Other', item.type)
     			replace('Attribute', item.name.pascalCase)
                 replace('attribute', item.name)
 	        }
-	        block(47, 54) {
+	        block(45, 52) {
                 showIf(item.list.equals, 'true')
                 replace('Other', item.typeDomain.name)
     			replace('Attribute', item.name.pascalCase)
@@ -71,7 +62,7 @@ template {
 	        }
 	    }
 	}
-	block(55, 61) {
+	block(55, 59) {
         replace('DomainName', domain.name)
         replace('domainName', domain.name.camelCase)
 	}

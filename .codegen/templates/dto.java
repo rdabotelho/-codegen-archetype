@@ -2,14 +2,12 @@ package com.example.demo.domain.dto;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.time.LocalDateTime;
-import java.time.LocalDate;
 
 public class DomainNameDto {
 
 	private Long id;
 	private String attribute;
-	private String attributeEnum;
+	private String attribute;
 	private OtherDto attribute;
 	private List<OtherDto> attribute = new ArrayList<>();
 
@@ -29,12 +27,12 @@ public class DomainNameDto {
 		this.attribute = attribute;
 	}
 
-	public String getAttributeEnum() {
-		return attributeEnum;
+	public String getAttribute() {
+		return attribute;
 	}
 
-	public void setAttributeEnum(String attributeEnum) {
-		this.attributeEnum = attributeEnum;
+	public void setAttribute(String attribute) {
+		this.attribute = attribute;
 	}
 
 	public OtherDto getAttribute() {

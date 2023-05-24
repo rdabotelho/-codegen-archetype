@@ -2,6 +2,10 @@ package com.example.demo.domain.mapper;
 
 import com.example.demo.domain.model.DomainName;
 import com.example.demo.domain.dto.DomainNameDto;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.stream.Collectors;
 import com.example.demo.domain.enums.*;
 
@@ -19,8 +23,9 @@ public class  DomainNameMapper {
 		if (dto == null) return entity;
 		entity.setId(dto.getId());
 		entity.setAttribute(dto.getAttribute());
-		entity.setAttributeEnum(dto.getAttributeEnum() == null || dto.getAttributeEnum().isBlank() ? null : TypeDomainName.valueOf(dto.getAttributeEnum()));
-		entity.setAttribute(OtherMapper.INSTANCE.toEntity(dto.getAttribute()));
+		entity.setAttribute(!(dto.getAttribute() == null || dto.getAttribute().isBlank()) ? LocalDate.parse(dto.getAttribute(), DateTimeFormatter.ISO_DATE) : null);
+		entity.setAttribute(!(dto.getAttribute() == null || dto.getAttribute().isBlank()) ? TypeDomainName.valueOf(dto.getAttribute()) : null);
+		entity.setAttribute(OtherMapper.INSTANCE.toEntity(dto.getAttribute()));		
 		entity.setAttribute(dto.getAttribute().stream().map(it -> OtherMapper.INSTANCE.toEntity(it)).collect(Collectors.toList()));
 		return entity;
 	}
@@ -30,7 +35,8 @@ public class  DomainNameMapper {
 		DomainNameDto dto = new DomainNameDto();
 		dto.setId(entity.getId());
 		dto.setAttribute(entity.getAttribute());
-		dto.setAttributeEnum(entity.getAttributeEnum() != null ? entity.getAttributeEnum().name() : null);
+		dto.setAttribute(entity.getAttribute() != null ? entity.getDate().format(DateTimeFormatter.ISO_DATE) : null);
+		dto.setAttribute(entity.getAttribute() != null ? entity.getAttribute().name() : null);
 		dto.setAttribute(OtherMapper.INSTANCE.toDto(entity.getAttribute()));
 		dto.setAttribute(entity.getAttribute().stream().map(it -> OtherMapper.INSTANCE.toDto(it)).collect(Collectors.toList()));
 		return dto;
