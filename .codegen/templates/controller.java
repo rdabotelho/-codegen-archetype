@@ -39,12 +39,13 @@ public class DomainNameController {
                 .body(result);
     }
 
-    @PutMapping("/domainNames")
-    public ResponseEntity<DomainNameDto> updateDomainName(@RequestBody DomainNameDto domainName) {
+    @PutMapping("/domainNames/{id}")
+    public ResponseEntity<DomainNameDto> updateDomainName(@PathVariable Long id, @RequestBody DomainNameDto domainName) {
         log.debug("REST request to update domainName : {}", domainName);
         if (domainName.getId() == null) {
             throw new RuntimeException("Invalid id");
         }
+        domainName.setId(id);
         return domainNameService.getDomainNameById(domainName.getId())
                 .map(it -> DomainNameMapper.INSTANCE.toEntity(domainName, it))
                 .map(it -> ResponseEntity.ok().body(DomainNameMapper.INSTANCE.toDto(domainNameService.updateDomainName(it).get())))
