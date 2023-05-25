@@ -20,7 +20,7 @@ template {
 		iterate(context.domains, domain) {
 			showIf(domain.entity, 'true')			
 			replace('Employee', domain.name)
-			replace('Employee', domain.name)
+			replace('employee', domain.name.camelCase)
 		}
 	}
 }
