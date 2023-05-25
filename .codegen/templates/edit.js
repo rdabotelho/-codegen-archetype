@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import EmployeeService from '../../services/EmployeeService';
+import OtherDomainService from '../../services/OtherDomainService';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 
 class EmployeeEdit extends Component {
@@ -13,6 +14,15 @@ class EmployeeEdit extends Component {
             id: 0,
             firstName: ''
         }
+    }
+
+    componentDidMount() {
+        OtherDomainService.getOtherDomains().then(response => {
+            this.setState({otherDomainList: response.data});
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
     }
 
     onChangeFirstName(e) {
@@ -66,6 +76,12 @@ class EmployeeEdit extends Component {
                         <select className="form-control" value={this.state.firstName} onChange={this.onChangeFirstName}>
                             <option value="" selected></option>
                             <option value="enumValueName">enumValueName</option>
+                        </select>
+                        <select className="form-control" value={this.state.otherDomain} onChange={this.onChangeOtherDomain}>
+                            <option value="" selected></option>
+                            {(this.state.otherDomainList || []).map((item) => (
+                            <option key={item.id} value={item.id}>{item.name}</option>
+                            ))}                            
                         </select>
                     </div>
                     <div className="form-group">

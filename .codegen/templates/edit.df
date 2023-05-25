@@ -5,93 +5,111 @@ template {
 	block(2, 2) {
 		replace('Employee', domain.name)
 	}	
-	block(5, 5) {
+	block(3, 3, 'OR') {
+		iterate(domain.attributes, item) {
+			showIf(item.oneToOne, 'true')
+			replace('OtherDomain', item.type)
+		}
+	}	
+	block(6, 6) {
 		replace('Employee', domain.name)
 	}
-	block(9, 9) {
+	block(10, 10) {
 		iterate(domain.attributes, item) {
 			replace('FirstName', item.name.pascalCase)
 		}
 	}
-	block(14, 14) {
+	block(15, 15) {
 		iterate(domain.attributes, item) {
 			replace('firstName', item.name)
 			delimiter('',',','')
 		}
 	}
-	block(17, 22) {
+	block(20, 25, 'OR') {
+		iterate(domain.attributes, item) {
+			showIf(item.oneToOne, 'true')
+			replace('OtherDomain', item.type)
+			replace('otherDomain', item.type.camelCase)
+		}
+	}	
+	block(27, 32) {
 		iterate(domain.attributes, item) {
 			replace('firstName', item.name)
 			replace('FirstName', item.name.pascalCase)
 		}
 	}
-	block(26, 26) {
+	block(36, 36) {
 		replace('Employee', domain.name)
 	}
-	block(29, 29) {
+	block(39, 39) {
 		iterate(domain.attributes, item) {
 			replace('firstName', item.name)
 			delimiter('',',','')
 		}
 	}
 
-	block(42, 42) {
+	block(52, 52) {
 		iterate(domain.attributes, item) {
 			replace('firstName', item.name)
 			delimiter('',',','')
 		}
 	}
-	block(45, 47) {
+	block(55, 57) {
 		replace('Employee', domain.name)
 	}
-	block(52, 52) {
+	block(62, 62) {
 		replace('employee', domain.name.camelCase)
 	}
-	block(59, 59) {
+	block(69, 69) {
 		replaceIf('Employee', domain.label, domain.label.notEquals, '', domain.name)
 	}
-	block(61, 70) {
+	block(72, 85) {
 		iterate(domain.attributes, item) {
-			block(61, 62) {
+			block(72, 72) {
 				replaceIf('First Name', item.label, item.label.notEquals, '', item.name.pascalCase)
 			}
-			block(63, 63) {
+			block(73, 73) {
 				showIf(item.type.lowerCase.equals, 'string')
 				replace('firstName', item.name)
 				replace('FirstName', item.name.pascalCase)
 			}
-			block(64, 64) {
+			block(74, 74) {
 				showIf(item.type.lowerCase.equals, 'number')
 				replace('firstName', item.name)
 				replace('FirstName', item.name.pascalCase)
 			}
-			block(65, 65) {
+			block(75, 75) {
 				showIf(item.type.lowerCase.equals, 'date')
 				replace('firstName', item.name)
 				replace('FirstName', item.name.pascalCase)
 			}
-			block(66, 69) {
-				block(66, 66) {
+			block(76, 85) {
+				block(76, 76) {
 					showIf(item.enum.equals, 'true')
 					replace('firstName', item.name)
 					replace('FirstName', item.name.pascalCase)
 				}
-				block(67, 67) {
+				block(77, 77) {
 					showIf(item.enum.equals, 'true')
 				}
-				block(68, 68) {
+				block(78, 78) {
 					showIf(item.enum.equals, 'true')
 					iterate(item.typeDomain.attributes, enumValue) {
 						replace('enumValueName', enumValue.name)
 					}
 				}
-				block(69, 69) {
+				block(79, 79) {
 					showIf(item.enum.equals, 'true')
 				}
+				block(80, 85) {
+					showIf(item.oneToOne, 'true')
+					replace('OtherDomain', item.type)
+					replace('otherDomain', item.type.camelCase)
+				}				
 			}
 		}
 	}
-	block(81, 81) {
+	block(97, 97) {
 		replace('Employee', domain.name)
 	}
 }
