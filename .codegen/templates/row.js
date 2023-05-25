@@ -14,7 +14,7 @@ class EmployeeRow extends Component {
         if (!window.confirm("Confirm exclusion?")) return; 
         EmployeeService.deleteEmployee(this.props.obj.id).then( res => {
             setTimeout(function () {
-                window.location.href = "/";
+                window.location.href = "/employees";
             }, 300);
         })
         .catch(function (error) {
@@ -32,7 +32,7 @@ class EmployeeRow extends Component {
                     {this.props.obj.firstName}
                 </td>
                 <td>
-                    <Link to={"/edit/"+this.props.obj.id} className="btn btn-primary">Edit</Link>
+                    <Link to={"/employees/edit/"+this.props.obj.id} className="btn btn-primary">Edit</Link>
                 </td>
                 <td>
                     <button onClick={this.delete} className="btn btn-danger">Delete</button>

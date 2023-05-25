@@ -5,29 +5,32 @@ template {
 	block(2, 3) {
 		replace('Employee', domain.name)
 	}	
-	block(5, 5) {
+	block(6, 6) {
 		replace('Employee', domain.name)
 	}
-	block(7, 10) {
+	block(8, 11) {
 		replace('employee', domain.name.camelCase)
 	}
-	block(12, 19) {
-		replace('Employee', domain.name)
-		replace('employee', domain.name.camelCase)
-	}
-	block(21, 25) {
+	block(13, 20) {
 		replace('Employee', domain.name)
 		replace('employee', domain.name.camelCase)
 	}
-	block(30, 30) {
+	block(22, 26) {
+		replace('Employee', domain.name)
+		replace('employee', domain.name.camelCase)
+	}
+	block(31, 31) {
 		replaceIf('Employee', domain.label, domain.label.notEquals, '', domain.name)
 	}
-	block(35, 35) {
+	block(36, 36) {
 		iterate(domain.attributes, item) {
 			replaceIf('First Name', item.label, item.label.notEquals, '', item.name.pascalCase)
 		}
 	}
-	block(48, 48) {
+	block(39, 39) {
+		replace('employee', domain.name.camelCase)
+	}
+	block(52, 52) {
 		replace('Employee', domain.name)
 	}
 }
