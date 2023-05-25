@@ -37,7 +37,7 @@ template {
 	block(44, 44) {
 		replaceIf('Employee', domain.label, domain.label.notEquals, '', domain.name)
 	}
-	block(47, 54) {
+	block(46, 55) {
 		iterate(domain.attributes, item) {
 			block(47, 47) {
 				replaceIf('First Name', item.label, item.label.notEquals, '', item.name.pascalCase)
@@ -62,6 +62,9 @@ template {
 					showIf(item.enum.equals, 'true')
 					replace('firstName', item.name)
 					replace('FirstName', item.name.pascalCase)
+				}
+				block(52, 52) {
+					showIf(item.enum.equals, 'true')
 				}
 				block(53, 53) {
 					showIf(item.enum.equals, 'true')
