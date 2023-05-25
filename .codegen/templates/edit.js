@@ -64,6 +64,7 @@ class EmployeeEdit extends Component {
                         <input type="number" className="form-control" value={this.state.firstName} onChange={this.onChangeFirstName}/>
                         <input type="date" className="form-control" value={this.state.firstName} onChange={this.onChangeFirstName}/>
                         <select className="form-control" value={this.state.firstName} onChange={this.onChangeFirstName}>
+                            <option value="" selected></option>
                             <option value="enumValueName">enumValueName</option>
                         </select>
                     </div>

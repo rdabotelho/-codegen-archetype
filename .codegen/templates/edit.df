@@ -67,25 +67,25 @@ template {
 				replace('firstName', item.name)
 				replace('FirstName', item.name.pascalCase)
 			}
-			block(66, 68) {
+			block(66, 69) {
 				block(66, 66) {
 					showIf(item.enum.equals, 'true')
 					replace('firstName', item.name)
 					replace('FirstName', item.name.pascalCase)
 				}
-				block(67, 67) {
+				block(68, 68) {
 					showIf(item.enum.equals, 'true')
 					iterate(item.typeDomain.attributes, enumValue) {
 						replace('enumValueName', enumValue.name)
 					}
 				}
-				block(68, 68) {
+				block(69, 69) {
 					showIf(item.enum.equals, 'true')
 				}
 			}
 		}
 	}
-	block(80, 80) {
+	block(81, 81) {
 		replace('Employee', domain.name)
 	}
 }
