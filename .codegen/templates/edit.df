@@ -8,6 +8,7 @@ template {
 	block(3, 3, 'OR') {
 		iterate(domain.attributes, item) {
 			showIf(item.oneToOne, 'true')
+			showIf(item.oneToMany, 'true')
 			replace('OtherDomain', item.type)
 		}
 	}	
@@ -28,6 +29,7 @@ template {
 	block(20, 25, 'OR') {
 		iterate(domain.attributes, item) {
 			showIf(item.oneToOne, 'true')
+			showIf(item.oneToMany, 'true')
 			replace('OtherDomain', item.type)
 			replace('otherDomain', item.type.camelCase)
 		}
@@ -103,6 +105,7 @@ template {
 				}
 				block(80, 85) {
 					showIf(item.oneToOne, 'true')
+					showIf(item.oneToMany, 'true')
 					replace('OtherDomain', item.type)
 					replace('otherDomain', item.type.camelCase)
 				}				
