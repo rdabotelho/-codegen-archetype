@@ -24,9 +24,6 @@ class App extends Component {
                       </div>
                   </nav> <br/>             
                   <Routes>
-                      <Route path='/' element={ <ArticleList/> } />
-                      <Route path='/create' element={ <ArticleCreate/> } />
-                      <Route path='/edit/:id' element={ <ArticleEdit/> } />
                   </Routes>
               </div>
           </Router>
