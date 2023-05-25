@@ -1,0 +1,13 @@
+entity Article {
+	String title
+	String text
+	String author
+	Date date
+	StatusEnum status
+}
+
+enum StatusEnum {
+	CREATED
+	EVALUATED
+	PUBLISHED
+}

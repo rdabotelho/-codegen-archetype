@@ -1,0 +1,18 @@
+template {
+	sourceFile: 'App.js'
+	targetFile: 'src/App.js'
+	scope: 'singleton'
+	block(5, 7) {
+		iterate(context.domains, domain) {
+			showIf(domain.entity, 'true')			
+			replace('Employee', domain.name)
+			replace('employee', domain.name.camelCase)
+		}
+	}
+	block(27, 29) {
+		iterate(context.domains, domain) {
+			showIf(domain.entity, 'true')			
+			replace('Employee', domain.name)
+		}
+	}
+}

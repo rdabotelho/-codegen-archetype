@@ -1,0 +1,20 @@
+template {
+	sourceFile: 'service.js'
+	targetFile: 'src/services/${domain.name}Service.js'
+	scope: 'entity'
+	block(3, 3) {
+		replace('EMPLOYEE', domain.name.snakeUpperCase)
+		replace('employee', domain.name.camelCase)
+	}
+	block(5, 5) {
+		replace('Employee', domain.name)
+	}
+	block(7, 25) {
+		replace('EMPLOYEE', domain.name.snakeUpperCase)
+		replace('employee', domain.name.camelCase)
+		replace('Employee', domain.name)
+	}
+	block(28, 28) {
+		replace('Employee', domain.name)
+	}
+}
