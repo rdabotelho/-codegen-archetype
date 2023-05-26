@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import EmployeeService from '../../services/EmployeeService';
-import OtherDomainService from '../../services/OtherDomainService';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 
 class EmployeeEdit extends Component {
@@ -14,15 +13,6 @@ class EmployeeEdit extends Component {
             id: 0,
             firstName: ''
         }
-    }
-
-    componentDidMount() {
-        OtherDomainService.getOtherDomains().then(response => {
-            this.setState({otherDomainList: response.data});
-        })
-        .catch(function (error) {
-            console.log(error);
-        });
     }
 
     onChangeFirstName(e) {
@@ -49,17 +39,18 @@ class EmployeeEdit extends Component {
 
         const obj = { 
             id: this.state.id,
-            firstName: this.state.firstName
+            firstName: this.state.firstName,
+            otherDomain: {id: this.state.otherDomain},
         };
 
-        EmployeeService.updateEmployee(obj.id, obj).then(response => {
+        EmployeeService.updateEmployee(obj).then(response => {
             NotificationManager.success("Employee updated successfully", 'Success')
         })
         .catch(function (error) {
             console.log(error);
         });
         setTimeout(function () {
-            window.location.href = "/employees";
+            window.location.href = "/";
         }, 500);
     }
 
@@ -74,14 +65,7 @@ class EmployeeEdit extends Component {
                         <input type="number" className="form-control" value={this.state.firstName} onChange={this.onChangeFirstName}/>
                         <input type="date" className="form-control" value={this.state.firstName} onChange={this.onChangeFirstName}/>
                         <select className="form-control" value={this.state.firstName} onChange={this.onChangeFirstName}>
-                            <option value="" selected></option>
                             <option value="enumValueName">enumValueName</option>
-                        </select>
-                        <select className="form-control" value={this.state.otherDomain} onChange={this.onChangeOtherDomain}>
-                            <option value="" selected></option>
-                            {(this.state.otherDomainList || []).map((item) => (
-                            <option key={item.id} value={item.id}>{item.name}</option>
-                            ))}                            
                         </select>
                     </div>
                     <div className="form-group">

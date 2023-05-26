@@ -12,15 +12,25 @@ template {
 		replace('Employee', domain.name)
 		replace('employee', domain.name.camelCase)
 	}
-	block(31, 33) {
+	block(31, 36) {
 		iterate(domain.attributes, item) {
-			replace('firstName', item.name)
+			block (31, 33, 'OR') {
+				showIf(item.basic, 'true')
+				showIf(item.enum, 'true')
+				replace('firstName', item.name)
+			}
+			block (34, 36, 'OR') {
+				showIf(item.oneToOne, 'true')
+				showIf(item.oneToMany, 'true')
+				replace('otherDomain', item.name)
+				replaceIf('label', item.label, item.label.notEquals, '', 'id')
+			}			
 		}
 	}
-	block(35, 35) {
+	block(38, 38) {
 		replace('employee', domain.name.camelCase)
 	}
-	block(47, 47) {
+	block(50, 50) {
 		replace('Employee', domain.name)
 	}
 }

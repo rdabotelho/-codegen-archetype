@@ -5,114 +5,95 @@ template {
 	block(2, 2) {
 		replace('Employee', domain.name)
 	}	
-	block(3, 3, 'OR') {
-		iterate(domain.attributes, item) {
-			showIf(item.oneToOne, 'true')
-			showIf(item.oneToMany, 'true')
-			replace('OtherDomain', item.type)
-		}
-	}	
-	block(6, 6) {
+	block(5, 5) {
 		replace('Employee', domain.name)
 	}
-	block(10, 10) {
+	block(9, 9) {
 		iterate(domain.attributes, item) {
 			replace('FirstName', item.name.pascalCase)
 		}
 	}
-	block(15, 15) {
+	block(14, 14) {
 		iterate(domain.attributes, item) {
 			replace('firstName', item.name)
 			delimiter('',',','')
 		}
 	}
-	block(20, 25, 'OR') {
-		iterate(domain.attributes, item) {
-			showIf(item.oneToOne, 'true')
-			showIf(item.oneToMany, 'true')
-			replace('OtherDomain', item.type)
-			replace('otherDomain', item.type.camelCase)
-		}
-	}	
-	block(27, 32) {
+	block(17, 22) {
 		iterate(domain.attributes, item) {
 			replace('firstName', item.name)
 			replace('FirstName', item.name.pascalCase)
 		}
 	}
-	block(36, 36) {
+	block(26, 26) {
 		replace('Employee', domain.name)
 	}
-	block(39, 39) {
+	block(29, 29) {
 		iterate(domain.attributes, item) {
 			replace('firstName', item.name)
 			delimiter('',',','')
 		}
 	}
 
-	block(52, 52) {
+	block(42, 43) {
 		iterate(domain.attributes, item) {
-			replace('firstName', item.name)
-			delimiter('',',','')
+			block (42, 42, 'OR') {
+				showIf(item.basic, 'true')
+				showIf(item.enum, 'true')
+				replace('firstName', item.name)
+			}
+			block (43, 43, 'OR') {
+				showIf(item.oneToOne, 'true')
+				showIf(item.oneToMany, 'true')
+				replace('otherDomain', item.name)
+			}
 		}
 	}
-	block(55, 57) {
+	block(46, 48) {
 		replace('Employee', domain.name)
 	}
-	block(62, 62) {
-		replace('employee', domain.name.camelCase)
-	}
-	block(69, 69) {
+	block(60, 60) {
 		replaceIf('Employee', domain.label, domain.label.notEquals, '', domain.name)
 	}
-	block(72, 85) {
+	block(62, 70) {
 		iterate(domain.attributes, item) {
-			block(72, 72) {
+			block(62, 63) {
 				replaceIf('First Name', item.label, item.label.notEquals, '', item.name.pascalCase)
 			}
-			block(73, 73) {
+			block(64, 64) {
 				showIf(item.type.lowerCase.equals, 'string')
 				replace('firstName', item.name)
 				replace('FirstName', item.name.pascalCase)
 			}
-			block(74, 74) {
+			block(65, 65) {
 				showIf(item.type.lowerCase.equals, 'number')
 				replace('firstName', item.name)
 				replace('FirstName', item.name.pascalCase)
 			}
-			block(75, 75) {
+			block(66, 66) {
 				showIf(item.type.lowerCase.equals, 'date')
 				replace('firstName', item.name)
 				replace('FirstName', item.name.pascalCase)
 			}
-			block(76, 85) {
-				block(76, 76) {
+			block(67, 69) {
+				block(67, 67) {
 					showIf(item.enum.equals, 'true')
 					replace('firstName', item.name)
 					replace('FirstName', item.name.pascalCase)
 				}
-				block(77, 77) {
-					showIf(item.enum.equals, 'true')
-				}
-				block(78, 78) {
+				block(68, 68) {
 					showIf(item.enum.equals, 'true')
 					iterate(item.typeDomain.attributes, enumValue) {
 						replace('enumValueName', enumValue.name)
 					}
 				}
-				block(79, 79) {
+				block(69, 69) {
 					showIf(item.enum.equals, 'true')
 				}
-				block(80, 85) {
-					showIf(item.oneToOne, 'true')
-					showIf(item.oneToMany, 'true')
-					replace('OtherDomain', item.type)
-					replace('otherDomain', item.type.camelCase)
-				}				
 			}
 		}
 	}
-	block(97, 97) {
+	block(81, 81) {
 		replace('Employee', domain.name)
 	}
 }

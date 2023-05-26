@@ -40,60 +40,68 @@ template {
 			replace('FirstName', item.name.pascalCase)
 		}
 	}
-	block(37, 37) {
+	block(37, 38) {
 		iterate(domain.attributes, item) {
-			replace('firstName', item.name)
-			delimiter('',',','')
+			block (37, 37, 'OR') {
+				showIf(item.basic, 'true')
+				showIf(item.enum, 'true')
+				replace('firstName', item.name)
+			}
+			block (38, 38, 'OR') {
+				showIf(item.oneToOne, 'true')
+				showIf(item.oneToMany, 'true')
+				replace('otherDomain', item.name)
+			}
 		}
 	}
-	block(40, 42) {
+	block(41, 43) {
 		replace('Employee', domain.name)
 	}
-	block(47, 47) {
+	block(48, 48) {
 		replace('employee', domain.name.camelCase)
 	}
-	block(54, 54) {
+	block(55, 55) {
 		replaceIf('Employee', domain.label, domain.label.notEquals, '', domain.name)
 	}
-	block(57, 70) {
+	block(58, 71) {
 		iterate(domain.attributes, item) {
-			block(57, 57) {
+			block(58, 58) {
 				replaceIf('First Name', item.label, item.label.notEquals, '', item.name.pascalCase)
 			}
-			block(58, 58) {
+			block(59, 59) {
 				showIf(item.type.lowerCase.equals, 'string')
 				replace('firstName', item.name)
 				replace('FirstName', item.name.pascalCase)
 			}
-			block(59, 59) {
+			block(60, 60) {
 				showIf(item.type.lowerCase.equals, 'number')
 				replace('firstName', item.name)
 				replace('FirstName', item.name.pascalCase)
 			}
-			block(60, 60) {
+			block(61, 61) {
 				showIf(item.type.lowerCase.equals, 'date')
 				replace('firstName', item.name)
 				replace('FirstName', item.name.pascalCase)
 			}
-			block(61, 70) {
-				block(61, 61) {
+			block(62, 71) {
+				block(62, 62) {
 					showIf(item.enum.equals, 'true')
 					replace('firstName', item.name)
 					replace('FirstName', item.name.pascalCase)
 				}
-				block(62, 62) {
+				block(63, 63) {
 					showIf(item.enum.equals, 'true')
 				}
-				block(63, 63) {
+				block(64, 64) {
 					showIf(item.enum.equals, 'true')
 					iterate(item.typeDomain.attributes, enumValue) {
 						replace('enumValueName', enumValue.name)
 					}
 				}
-				block(64, 64) {
+				block(65, 65) {
 					showIf(item.enum.equals, 'true')
 				}
-				block(65, 70, 'OR') {
+				block(66, 71, 'OR') {
 					showIf(item.oneToOne, 'true')
 					showIf(item.oneToMany, 'true')
 					replace('OtherDomain', item.type)
@@ -102,7 +110,7 @@ template {
 			}
 		}
 	}
-	block(82, 82) {
+	block(83, 83) {
 		replace('Employee', domain.name)
 	}
 }

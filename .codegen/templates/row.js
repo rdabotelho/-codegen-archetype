@@ -32,6 +32,9 @@ class EmployeeRow extends Component {
                     {this.props.obj.firstName}
                 </td>
                 <td>
+                    {this.props.obj.otherDomain.label}
+                </td>
+                <td>
                     <Link to={"/employees/edit/"+this.props.obj.id} className="btn btn-primary">Edit</Link>
                 </td>
                 <td>

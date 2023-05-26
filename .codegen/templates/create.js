@@ -34,7 +34,8 @@ class EmployeeCreate extends Component {
         e.preventDefault();
 
         const obj = {
-            firstName: this.state.firstName
+            firstName: this.state.firstName,
+            otherDomain: {id: this.state.otherDomain},
         };
 
         EmployeeService.createEmployee(obj).then(response => {
