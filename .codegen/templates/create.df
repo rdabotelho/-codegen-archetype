@@ -106,6 +106,7 @@ template {
 					showIf(item.oneToMany, 'true')
 					replace('OtherDomain', item.type)
 					replace('otherDomain', item.type.camelCase)
+					replaceIf('fieldLabel', item.typeDomain.fieldLabel, item.typeDomain.fieldLabel.notEquals, '', 'id')
 				}
 			}
 		}

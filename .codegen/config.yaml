@@ -1,0 +1,4 @@
+PROJECT_NAME:
+  label: Project Name
+  value: HelloWorld
+  required: true

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import EmployeeService from '../../services/EmployeeService';
+import OtherDomainService from '../../services/OtherDomainService';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 
 class EmployeeEdit extends Component {
@@ -32,6 +33,12 @@ class EmployeeEdit extends Component {
         .catch(function (error) {
             console.log(error);
         });
+        OtherDomainService.getOtherDomains().then(response => {
+            this.setState({otherDomainList: response.data});
+        })
+        .catch(function (error) {
+            console.log(error);
+        });        
     }
 
     onSubmit(e) {
@@ -43,7 +50,7 @@ class EmployeeEdit extends Component {
             otherDomain: {id: this.state.otherDomain},
         };
 
-        EmployeeService.updateEmployee(obj).then(response => {
+        EmployeeService.updateEmployee(obj.id, obj).then(response => {
             NotificationManager.success("Employee updated successfully", 'Success')
         })
         .catch(function (error) {
@@ -65,7 +72,14 @@ class EmployeeEdit extends Component {
                         <input type="number" className="form-control" value={this.state.firstName} onChange={this.onChangeFirstName}/>
                         <input type="date" className="form-control" value={this.state.firstName} onChange={this.onChangeFirstName}/>
                         <select className="form-control" value={this.state.firstName} onChange={this.onChangeFirstName}>
+                            <option value="" selected></option>
                             <option value="enumValueName">enumValueName</option>
+                        </select>
+                        <select className="form-control" value={this.state.otherDomain.id} onChange={this.onChangeOtherDomain}>
+                            <option value=""></option>
+                            {(this.state.otherDomainList || []).map((item) => (
+                            <option key={item.id} value={item.id}>{item.fieldLabel}</option>
+                            ))}                            
                         </select>
                     </div>
                     <div className="form-group">

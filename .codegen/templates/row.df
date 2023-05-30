@@ -23,7 +23,7 @@ template {
 				showIf(item.oneToOne, 'true')
 				showIf(item.oneToMany, 'true')
 				replace('otherDomain', item.name)
-				replaceIf('label', item.label, item.label.notEquals, '', 'id')
+				replaceIf('fieldLabel', item.typeDomain.fieldLabel, item.typeDomain.fieldLabel.notEquals, '', 'id')
 			}			
 		}
 	}

@@ -63,10 +63,10 @@ class EmployeeCreate extends Component {
                             <option value="" selected></option>
                             <option value="enumValueName">enumValueName</option>
                         </select>
-                        <select className="form-control" value={this.state.otherDomain} onChange={this.onChangeOtherDomain}>
-                            <option value="" selected></option>
+                        <select className="form-control" value={this.state.otherDomain.id} onChange={this.onChangeOtherDomain}>
+                            <option value=""></option>
                             {(this.state.otherDomainList || []).map((item) => (
-                            <option key={item.id} value={item.id}>{item.name}</option>
+                            <option key={item.id} value={item.id}>{item.fieldLabel}</option>
                             ))}                            
                         </select>
                     </div>
