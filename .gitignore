@@ -1,1 +1,5 @@
 target/**/*
+
+### macos ###
+.DS_Store
+.codegen/.DS_Store

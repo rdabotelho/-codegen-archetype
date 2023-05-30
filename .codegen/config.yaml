@@ -1,0 +1,8 @@
+PROJECT_NAME:
+  label: Project Name
+  value: HelloWorld
+  required: true
+PACKAGE:
+  label: Package
+  value: com.example.demo
+  required: true

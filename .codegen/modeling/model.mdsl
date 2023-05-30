@@ -1,9 +1,13 @@
 entity Article {
 	String title
 	String text
-	String author
+	Author author
 	Date date
 	StatusEnum status
+}
+
+entity Author (label: 'name') {
+	String name
 }
 
 enum StatusEnum {
