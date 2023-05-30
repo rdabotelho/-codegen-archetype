@@ -4,7 +4,7 @@ template {
 	scope: 'entity'
 	block(3, 3) {
 		replace('EMPLOYEE', domain.name.snakeUpperCase)
-		replace('employee', domain.name.camelCase)
+		replace('employee', domain.name.lowerCase)
 	}
 	block(5, 5) {
 		replace('Employee', domain.name)

@@ -27,7 +27,8 @@ class EmployeeEdit extends Component {
         EmployeeService.getEmployeeById(id).then(response => {
             this.setState({
                 id: response.data.id,
-                firstName: response.data.firstName
+                firstName: response.data.firstName,
+                otherDomain: response.data.otherDomain?.id,
             });
         })
         .catch(function (error) {
@@ -75,7 +76,7 @@ class EmployeeEdit extends Component {
                             <option value="" selected></option>
                             <option value="enumValueName">enumValueName</option>
                         </select>
-                        <select className="form-control" value={this.state.otherDomain.id} onChange={this.onChangeOtherDomain}>
+                        <select className="form-control" value={this.state.otherDomain} onChange={this.onChangeFirstName}>
                             <option value=""></option>
                             {(this.state.otherDomainList || []).map((item) => (
                             <option key={item.id} value={item.id}>{item.fieldLabel}</option>

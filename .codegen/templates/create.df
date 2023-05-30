@@ -31,7 +31,7 @@ template {
 			showIf(item.oneToOne, 'true')
 			showIf(item.oneToMany, 'true')
 			replace('OtherDomain', item.type)
-			replace('otherDomain', item.type.camelCase)
+			replace('otherDomain', item.name.camelCase)
 		}
 	}	
 	block(26, 31) {
@@ -104,8 +104,8 @@ template {
 				block(66, 71, 'OR') {
 					showIf(item.oneToOne, 'true')
 					showIf(item.oneToMany, 'true')
-					replace('OtherDomain', item.type)
-					replace('otherDomain', item.type.camelCase)
+					replace('FirstName', item.name.pascalCase)
+					replace('otherDomain', item.name)
 					replaceIf('fieldLabel', item.typeDomain.fieldLabel, item.typeDomain.fieldLabel.notEquals, '', 'id')
 				}
 			}
