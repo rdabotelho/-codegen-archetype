@@ -55,8 +55,9 @@ template {
                 replace('Attribute', item.name.pascalCase)
                 replace('TypeDomainName', item.type)
 	        }
-	        block(28, 28) {
+	        block(28, 28, 'OR') {
                 showIf(item.oneToOne.equals, 'true')
+                showIf(item.manyToOne.equals, 'true')
                 replace('Other', item.type)
                 replace('Attribute', item.name.pascalCase)
 	        }
@@ -87,8 +88,9 @@ template {
                 showIf(item.enum, 'true')
                 replace('Attribute', item.name.pascalCase)
 	        }
-	        block(40, 40) {
+	        block(40, 40, 'OR') {
                 showIf(item.oneToOne.equals, 'true')
+                showIf(item.manyToOne.equals, 'true')
                 replace('Other', item.type)
                 replace('Attribute', item.name.pascalCase)
 	        }

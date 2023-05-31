@@ -24,8 +24,9 @@ template {
                 showIf(item.enum, 'true')
                 replace('attribute', item.name)
 	        }
-	        block(11, 11) {
+	        block(11, 11, 'OR') {
                 showIf(item.oneToOne.equals, 'true')
+                showIf(item.manyToOne.equals, 'true')
                 replace('Other', item.type)
                 replace('attribute', item.name)
 	        }
@@ -48,8 +49,9 @@ template {
     			replace('Attribute', item.name.pascalCase)
                 replace('attribute', item.name)
 	        }
-	        block(37, 44) {
+	        block(37, 44, 'OR') {
                 showIf(item.oneToOne.equals, 'true')
+                showIf(item.manyToOne.equals, 'true')
                 replace('Other', item.type)
     			replace('Attribute', item.name.pascalCase)
                 replace('attribute', item.name)
