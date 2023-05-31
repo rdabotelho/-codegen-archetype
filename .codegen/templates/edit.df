@@ -74,6 +74,9 @@ template {
 	block(54, 56) {
 		replace('Employee', domain.name)
 	}
+	block(61, 61) {
+		replace('employee', domain.name.camelCase)
+	}
 	block(68, 68) {
 		replaceIf('Employee', domain.label, domain.label.notEquals, '', domain.name)
 	}

@@ -58,7 +58,7 @@ class EmployeeEdit extends Component {
             console.log(error);
         });
         setTimeout(function () {
-            window.location.href = "/";
+            window.location.href = "/employees";
         }, 500);
     }
 
