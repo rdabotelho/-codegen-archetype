@@ -8,7 +8,7 @@ template {
 	block(3, 3, 'OR') {
 		iterate(domain.attributes, item) {
 			showIf(item.oneToOne, 'true')
-			showIf(item.oneToMany, 'true')
+			showIf(item.manyToOne, 'true')
 			replace('OtherDomain', item.type)
 		}
 	}	
@@ -44,7 +44,7 @@ template {
 			}
 			block(31, 31, 'OR') {
 				showIf(item.oneToOne, 'true')
-				showIf(item.oneToMany, 'true')
+				showIf(item.manyToOne, 'true')
 				replace('otherDomain', item.name)
 			}
 		}
@@ -52,7 +52,7 @@ template {
 	block(37, 42, 'OR') {
 		iterate(domain.attributes, item) {
 			showIf(item.oneToOne, 'true')
-			showIf(item.oneToMany, 'true')
+			showIf(item.manyToOne, 'true')
 			replace('OtherDomain', item.type)
 			replace('otherDomain', item.name.camelCase)
 		}
@@ -66,7 +66,7 @@ template {
 			}
 			block (51, 51, 'OR') {
 				showIf(item.oneToOne, 'true')
-				showIf(item.oneToMany, 'true')
+				showIf(item.manyToOne, 'true')
 				replace('otherDomain', item.name)
 			}
 		}
@@ -114,7 +114,7 @@ template {
 				}
 				block(79, 84, 'OR') {
 					showIf(item.oneToOne, 'true')
-					showIf(item.oneToMany, 'true')
+					showIf(item.manyToOne, 'true')
 					replace('FirstName', item.name.pascalCase)
 					replace('otherDomain', item.name)
 					replaceIf('fieldLabel', item.typeDomain.fieldLabel, item.typeDomain.fieldLabel.notEquals, '', 'id')
